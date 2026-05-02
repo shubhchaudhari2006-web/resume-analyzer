@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 Resume Analyzer</h1>
+            <p>Analyze your resume and get intelligent recommendations for improvement</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <h2>Upload Your Resume</h2>
+                <p class="subtitle">Supported formats: PDF, DOCX, TXT</p>
+                
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="file-input-wrapper">
+                        <input type="file" id="fileInput" name="file" accept=".pdf,.docx,.txt" required>
+                        <label for="fileInput" class="file-label">
+                            <span class="icon">📁</span>
+                            <span>Choose file or drag & drop</span>
+                        </label>
+                    </div>
+                    
+                    <div id="fileInfo" class="file-info hidden">
+                        <p>Selected: <span id="fileName"></span></p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Analyze Resume</button>
+                </form>
+                
+                <div id="loadingSpinner" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing your resume...</p>
+                </div>
+                
+                <div id="errorMessage" class="error-message hidden"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

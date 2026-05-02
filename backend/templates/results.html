@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Resume Analysis Results</h1>
+            <a href="/" class="btn-back">← Back to Analyzer</a>
+        </header>
+
+        <main>
+            <!-- Score Section -->
+            <section class="score-section">
+                <h2>Resume Score</h2>
+                <div class="score-card">
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span class="score-value" id="scoreValue">0</span>
+                            <span class="score-label">/100</span>
+                        </div>
+                    </div>
+                    <div class="score-details">
+                        <p id="scoreMessage" class="score-message"></p>
+                        <div class="score-breakdown" id="scoreBreakdown"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extracted Information -->
+            <section class="info-section">
+                <h2>Extracted Information</h2>
+                
+                <!-- Contact Info -->
+                <div class="info-card">
+                    <h3>👤 Contact Information</h3>
+                    <div id="contactInfo" class="info-content"></div>
+                </div>
+                
+                <!-- Summary -->
+                <div class="info-card">
+                    <h3>📝 Professional Summary</h3>
+                    <div id="summaryInfo" class="info-content"></div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="info-card">
+                    <h3>💼 Work Experience</h3>
+                    <div id="experienceInfo" class="info-content"></div>
+                </div>
+                
+                <!-- Education -->
+                <div class="info-card">
+                    <h3>🎓 Education</h3>
+                    <div id="educationInfo" class="info-content"></div>
+                </div>
+                
+                <!-- Skills -->
+                <div class="info-card">
+                    <h3>🔧 Skills</h3>
+                    <div id="skillsInfo" class="info-content"></div>
+                </div>
+                
+                <!-- Certifications -->
+                <div class="info-card">
+                    <h3>🏅 Certifications</h3>
+                    <div id="certificationsInfo" class="info-content"></div>
+                </div>
+            </section>
+
+            <!-- Recommendations -->
+            <section class="recommendations-section">
+                <h2>Recommendations</h2>
+                
+                <div class="recommendations-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="error">Critical Issues</button>
+                    <button class="filter-btn" data-filter="warning">Warnings</button>
+                    <button class="filter-btn" data-filter="suggestion">Suggestions</button>
+                </div>
+                
+                <div id="recommendationsList" class="recommendations-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        const fileId = "{{ file_id }}";
+        loadResults(fileId);
+    </script>
+</body>
+</html>
